@@ -3,6 +3,7 @@ import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
 
 const SiteFooter = () => {
+
     return (
         <Footer>
             <div className="w-full bg-black text-[#ddcc70] py-4">

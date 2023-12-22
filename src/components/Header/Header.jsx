@@ -1,7 +1,11 @@
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthProvider } from "../../Provider/Provider";
 
 const Header = () => {
+    const { currentUser, logout } = useContext(AuthProvider);
+    console.log(currentUser)
     const menuLinks = [
         { name: "Home", id: 1, path: "/" },
         { name: "Add Job", id: 2, path: "/addJob" },
@@ -20,27 +24,27 @@ const Header = () => {
                 <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Genie</span>
 
             </Navbar.Brand>
-            <div className="flex gap-3 md:order-2">
-                <Dropdown
+            <div className="flex gap-3 items-center md:order-2">
+                {currentUser ? <Dropdown
                     arrowIcon={false}
                     inline
                     label={
-                        <Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded />
+                        <Avatar alt="User settings" img={currentUser.photoURL} rounded />
 
                     }
 
                 >
                     <Dropdown.Header>
-                        <span className="block text-sm">Bonnie Green</span>
-                        <span className="block truncate text-sm font-medium">name@flowbite.com</span>
+                        <span className="block text-sm">{currentUser.displayName}</span>
+                        <span className="block truncate text-sm font-medium">{currentUser.email}</span>
                     </Dropdown.Header>
-                    <Dropdown.Item>Dashboard</Dropdown.Item>
+                    <Dropdown.Item>Profile</Dropdown.Item>
                     <Dropdown.Item>Settings</Dropdown.Item>
                     <Dropdown.Item>Earnings</Dropdown.Item>
                     <Dropdown.Divider />
-                    <Dropdown.Item>Sign out</Dropdown.Item>
-                </Dropdown>
-                <button className="font-bold">Login</button>
+                    <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
+                </Dropdown> : ""}
+                {currentUser ? "" : <Link to={'/login'} className="font-bold">Login</Link>}
             </div>
             <Navbar.Collapse className=" text-center ">
                 {
