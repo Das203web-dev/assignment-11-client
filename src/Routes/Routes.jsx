@@ -9,10 +9,14 @@ import Login from "../components/Login/Login";
 import Registration from "../components/Registration/Registration";
 import JobDetails from "../components/JobDetails/JobDetails";
 import PlaceBid from "../components/PlaceBid/PlaceBid";
+import ErrorPage from "../Pages/404/ErrorPage";
+import Update from "../components/Update/Update";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Layout></Layout>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: "/",
@@ -21,23 +25,23 @@ const router = createBrowserRouter([
             },
             {
                 path: "/addJob",
-                element: <AddJob></AddJob>
+                element: <PrivateRoute><AddJob></AddJob></PrivateRoute>
             },
             {
                 path: "/myPostedJob",
-                element: <MyPostedJob></MyPostedJob>
+                element: <PrivateRoute><MyPostedJob></MyPostedJob></PrivateRoute>
             },
             {
                 path: "/myBids",
-                element: <MyBids></MyBids>
+                element: <PrivateRoute><MyBids></MyBids></PrivateRoute>
             },
             {
                 path: "/bidRequest",
-                element: <BidsRequest></BidsRequest>
+                element: <PrivateRoute><BidsRequest></BidsRequest></PrivateRoute>
             },
             {
                 path: "/jobDetails/:id",
-                element: <JobDetails></JobDetails>,
+                element: <PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/jobDetails/${params.id}`)
             },
             {
@@ -52,6 +56,11 @@ const router = createBrowserRouter([
             {
                 path: "/register",
                 element: <Registration></Registration>
+            },
+            {
+                path: "/update/:id",
+                element: <Update></Update>,
+                loader: ({ params }) => fetch(`http://localhost:5000/update/${params.id}`)
             }
         ]
     }

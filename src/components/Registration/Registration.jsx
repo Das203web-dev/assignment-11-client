@@ -1,13 +1,15 @@
 import { Checkbox, Label, TextInput } from 'flowbite-react';
 import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthProvider } from '../../Provider/Provider';
 import Swal from 'sweetalert2';
 import { FaGoogle } from 'react-icons/fa6';
 import axios from 'axios';
 
 const Registration = () => {
-    const { createUser, googleSignIn, userProfile } = useContext(AuthProvider);
+    const location = useLocation();
+    const navigate = useNavigate()
+    const { createUser, googleSignIn } = useContext(AuthProvider);
     const [validatePass, setValidatePass] = useState(null)
     const handleGoogleSignIn = () => {
         googleSignIn()
@@ -31,6 +33,7 @@ const Registration = () => {
                           `
                         }
                     });
+                    navigate(location?.state ? location.state : "/")
                 }
             })
             .catch(error => {
@@ -76,7 +79,9 @@ const Registration = () => {
                     animate__faster
                   `
                         }
-                    })
+                    });
+                    navigate(location?.state ? location.state : "/")
+
                 }
             })
             .catch(error => {

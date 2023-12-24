@@ -13,14 +13,14 @@ const Home = () => {
             .then(res => res.json())
             .then(data => setJobs(data))
     }
-
+    console.log(jobs)
     return (
         <div>
             <Banner></Banner>
             <div className='md:w-2/3 md:mx-auto my-20 m-2'>
                 <div className='grid grid-cols-3 justify-between items-center'>
                     {
-                        datas.map(data => <CategoryTabs jobs={jobs} handleCategory={handleCategory} key={data.id} data={data}></CategoryTabs>)
+                        datas.map(data => <CategoryTabs handleCategory={handleCategory} key={data.id} data={data}></CategoryTabs>)
                     }
 
                 </div>

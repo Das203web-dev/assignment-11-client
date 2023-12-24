@@ -1,18 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthProvider } from '../../../Provider/Provider';
+import { Button, Checkbox, Label, Modal, Select, TextInput, Textarea } from 'flowbite-react';
+import axios from 'axios';
 
 const JobCard = ({ job }) => {
-    const { currentUser } = useContext(AuthProvider);
+    const { currentUser, datas } = useContext(AuthProvider);
+    // const {datas} = useContext(AuthProvider)
     // console.log(currentUser.email)
     // console.log(job)
     const { jobDetails, _id } = job;
-    console.log(_id)
-    const { jobTitle, date, maximumPrice, minimumPrice, description } = jobDetails;
+    const { jobTitle, date, maximumPrice, minimumPrice, description, category } = jobDetails;
 
-    // const handleBid = () => {
 
-    // }
 
     return (
         <div className='shadow-sm shadow-slate-300 flex flex-col gap-2 rounded-lg p-5 hover:shadow-md'>
@@ -27,7 +27,7 @@ const JobCard = ({ job }) => {
                     }
                 </div>
             </div>
-            {currentUser?.email === jobDetails?.email ? <Link to={`/jobDetails/${job._id}`}><button className='p-[10px] bg-[#ddcc70] rounded-lg'>Update</button></Link> : <Link to={`/jobDetails/${job._id}`}><button className='p-[10px] bg-[#ddcc70] rounded-lg'>Bid Now</button></Link>}
+            {currentUser?.email === jobDetails?.email ? <Link to={`/jobDetails/${job._id}`}><button className='p-[10px] bg-[#ddcc70] rounded-lg'>Details</button></Link> : <Link to={`/jobDetails/${job._id}`}><button className='p-[10px] bg-[#ddcc70] rounded-lg'>Bid Now</button></Link>}
         </div>
     );
 };

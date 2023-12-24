@@ -1,12 +1,14 @@
 import { Checkbox, Label, TextInput } from 'flowbite-react';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthProvider } from '../../Provider/Provider';
 import Swal from 'sweetalert2';
 import { FaGoogle } from 'react-icons/fa6';
 import axios from 'axios';
 
 const Login = () => {
+    const location = useLocation();
+    const navigate = useNavigate()
     const { userLogin, googleSignIn } = useContext(AuthProvider);
     const handleGoogleSignIn = () => {
         googleSignIn()
@@ -40,6 +42,7 @@ const Login = () => {
         const form = e.target;
         const userEmail = form.email.value;
         const userPass = form.password.value;
+
         userLogin(userEmail, userPass)
             .then(result => {
                 const user = result.user;
@@ -65,6 +68,8 @@ const Login = () => {
                                       `
                                     }
                                 });
+                                navigate(location?.state ? location.state : "/")
+
                             }
                         })
 
