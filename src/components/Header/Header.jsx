@@ -5,7 +5,7 @@ import { AuthProvider } from "../../Provider/Provider";
 
 const Header = () => {
     const { currentUser, logout } = useContext(AuthProvider);
-    console.log(currentUser)
+    // console.log(currentUser)
     const menuLinks = [
         { name: "Home", id: 1, path: "/" },
         { name: "Add Job", id: 2, path: "/addJob" },
@@ -14,7 +14,7 @@ const Header = () => {
         { name: "Bid Request", id: 5, path: "/bidRequest" },
     ]
     return (
-        <Navbar fluid rounded className="text-[#b1a45a] text-base shadow-lg">
+        <Navbar fluid rounded className="text-[#ddcc70] text-base shadow-lg">
             <Navbar.Toggle />
 
             <Navbar.Brand href="/">
@@ -43,8 +43,8 @@ const Header = () => {
                     <Dropdown.Item>Earnings</Dropdown.Item>
                     <Dropdown.Divider />
                     <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
-                </Dropdown> : ""}
-                {currentUser ? "" : <Link to={'/login'} className="font-bold">Login</Link>}
+                </Dropdown> : <Link to={'/login'} className="font-bold">Login</Link>}
+                {/* {currentUser ? "" : <Link to={'/login'} className="font-bold">Login</Link>} */}
             </div>
             <Navbar.Collapse className=" text-center ">
                 {

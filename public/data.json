@@ -1,0 +1,98 @@
+[
+    {
+        "category": "Web Development",
+        "jobTitle": "Frontend Developer",
+        "deadline": "2024-02-15",
+        "priceRange": "$2000 - $2500",
+        "shortDescription": "Develop responsive web applications using modern frontend technologies.",
+        "bidNowButton": true
+    },
+    {
+        "category": "Web Development",
+        "jobTitle": "Full Stack Developer",
+        "deadline": "2024-04-15",
+        "priceRange": "$3000 - $3500",
+        "shortDescription": "Build scalable and secure web applications from scratch.",
+        "bidNowButton": true
+    },
+    {
+        "category": "Web Development",
+        "jobTitle": "UI/UX Designer",
+        "deadline": "2024-03-20",
+        "priceRange": "$2500 - $3000",
+        "shortDescription": "Create intuitive and visually appealing user interfaces.",
+        "bidNowButton": true
+    },
+    {
+        "category": "Digital Marketing",
+        "jobTitle": "Social Media Manager",
+        "deadline": "2024-04-05",
+        "priceRange": "$800 - $1000",
+        "shortDescription": "Manage social media accounts and create engaging content.",
+        "bidNowButton": true
+    },
+    {
+        "category": "Digital Marketing",
+        "jobTitle": "SEO Specialist",
+        "deadline": "2024-03-05",
+        "priceRange": "$600 - $800",
+        "shortDescription": "Optimize websites for better search engine rankings.",
+        "bidNowButton": true
+    },
+    {
+        "category": "Digital Marketing",
+        "jobTitle": "Content Marketer",
+        "deadline": "2024-03-25",
+        "priceRange": "$700 - $900",
+        "shortDescription": "Create compelling content to attract and engage audiences.",
+        "bidNowButton": true
+    },
+    {
+        "category": "Graphics Design",
+        "jobTitle": "Logo Designer",
+        "deadline": "2024-03-10",
+        "priceRange": "$300 - $500",
+        "shortDescription": "Create a unique and eye-catching logo for a startup.",
+        "bidNowButton": true
+    },
+    {
+        "category": "Graphics Design",
+        "jobTitle": "Illustrator",
+        "deadline": "2024-03-30",
+        "priceRange": "$250 - $350",
+        "shortDescription": "Create illustrations for children's books.",
+        "bidNowButton": true
+    },
+    {
+        "category": "Graphics Design",
+        "jobTitle": "Brand Identity Designer",
+        "deadline": "2024-04-20",
+        "priceRange": "$400 - $600",
+        "shortDescription": "Develop brand identity elements like logos, color schemes, and typography.",
+        "bidNowButton": true
+    },
+    {
+        "category": "Web Development",
+        "jobTitle": "Backend Developer",
+        "deadline": "2024-03-15",
+        "priceRange": "$2200 - $2700",
+        "shortDescription": "Create server-side logic and APIs for web applications.",
+        "bidNowButton": true
+    },
+    {
+        "category": "Digital Marketing",
+        "jobTitle": "Email Marketing Specialist",
+        "deadline": "2024-04-10",
+        "priceRange": "$500 - $700",
+        "shortDescription": "Plan and execute effective email marketing campaigns.",
+        "bidNowButton": true
+    },
+    {
+        "category": "Web Development",
+        "jobTitle": "Mobile App Developer",
+        "deadline": "2024-02-28",
+        "priceRange": "$2800 - $3300",
+        "shortDescription": "Develop mobile applications for Android and iOS platforms.",
+        "bidNowButton": true
+    }
+]

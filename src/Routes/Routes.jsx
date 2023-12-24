@@ -7,6 +7,8 @@ import MyBids from "../Pages/MyBids/MyBids";
 import BidsRequest from "../Pages/BidsRequest/BidsRequest";
 import Login from "../components/Login/Login";
 import Registration from "../components/Registration/Registration";
+import JobDetails from "../components/JobDetails/JobDetails";
+import PlaceBid from "../components/PlaceBid/PlaceBid";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -14,7 +16,8 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <Home></Home>
+                element: <Home></Home>,
+                // loader: () => fetch('http://localhost:5000/category')
             },
             {
                 path: "/addJob",
@@ -31,6 +34,16 @@ const router = createBrowserRouter([
             {
                 path: "/bidRequest",
                 element: <BidsRequest></BidsRequest>
+            },
+            {
+                path: "/jobDetails/:id",
+                element: <JobDetails></JobDetails>,
+                loader: ({ params }) => fetch(`http://localhost:5000/jobDetails/${params.id}`)
+            },
+            {
+                path: "/jobDetails/:id/placeBid",
+                element: <PlaceBid></PlaceBid>,
+                loader: ({ params }) => fetch(`http://localhost:5000/jobDetails/${params.id}/placeBid`)
             },
             {
                 path: "/login",
