@@ -6,9 +6,9 @@ import { Navigate, useLocation } from 'react-router-dom';
 const PrivateRoute = ({ children }) => {
     const { currentUser, loading } = useContext(AuthProvider);
     const location = useLocation();
-    console.log("location is ", location)
-    console.log("loading is", loading)
-    console.log("currentuser is", currentUser)
+    // console.log("location is ", location)
+    // console.log("loading is", loading)
+    // console.log("currentuser is", currentUser)
     if (loading) {
         return (<Button color="gray">
             <Spinner aria-label="Alternate spinner button example" size="sm" />

@@ -14,6 +14,11 @@ const Login = () => {
         googleSignIn()
             .then(result => {
                 if (result.user) {
+                    const loggedUser = result.user.email;
+                    axios.post("http://localhost:5000/jwt", loggedUser, { withCredentials: true })
+                        .then(res => {
+                            console.log(res.data)
+                        })
                     Swal.fire({
                         title: "Login successful",
                         showClass: {
@@ -31,6 +36,8 @@ const Login = () => {
                           `
                         }
                     });
+                    navigate(location?.state ? location.state : "/")
+
                 }
             })
             .catch(error => {

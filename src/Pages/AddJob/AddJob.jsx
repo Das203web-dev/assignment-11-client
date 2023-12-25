@@ -2,6 +2,7 @@ import { Button, Checkbox, Datepicker, Label, Select, TextInput, Textarea } from
 import React, { useContext } from 'react';
 import { AuthProvider } from '../../Provider/Provider';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const AddJob = () => {
     const { currentUser, datas } = useContext(AuthProvider);
@@ -19,10 +20,22 @@ const AddJob = () => {
         console.log(jobDetails)
         axios.post('http://localhost:5000/myPostedJob', { jobDetails })
             .then(result => {
-                console.log(result.data)
+                if (result.data) {
+                    Swal.fire({
+                        title: "Job",
+                        text: "Added Sucessfully",
+                        icon: "success"
+                    });
+                }
             })
             .catch(error => {
-                console.log(error)
+                if (error) {
+                    Swal.fire({
+                        title: "Oops",
+                        text: "Can not Add Job",
+                        icon: "error"
+                    });
+                }
             })
     }
     return (

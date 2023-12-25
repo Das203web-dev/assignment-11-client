@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from 'react';
 import auth from '../Firebase/firebase.config';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import { GoogleAuthProvider } from "firebase/auth";
+import axios from 'axios';
 
 const provider = new GoogleAuthProvider();
 
@@ -34,10 +35,27 @@ const Provider = ({ children }) => {
 
     useEffect(() => {
         onAuthStateChanged(auth, user => {
+            console.log("current userser is", currentUser)
+            console.log("user is", user)
+            const userEmail = user?.email || currentUser?.email;
+            const loggedUser = { email: userEmail };
             setUser(user);
             setLoading(false)
+            if (user) {
+                // const loggedUser = { email: user.email }
+                axios.post('http://localhost:5000/jwt', loggedUser, { withCredentials: true })
+                    .then(res => {
+                        console.log("provider compo", res.data)
+                    })
+            }
+            else {
+                axios.post("http://localhost:5000/logout", loggedUser, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data)
+                    })
+            }
         })
-    }, []);
+    }, [currentUser]);
     // const userProfile = () => {
     //     return updateProfile(auth.currentUser, {
     //         displayName: currentUser.name, photoURL: currentUser.photo

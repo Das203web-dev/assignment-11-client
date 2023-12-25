@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { AuthProvider } from '../../Provider/Provider';
 import { useLoaderData } from 'react-router-dom';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const Update = () => {
     const { datas, currentUser } = useContext(AuthProvider);
@@ -22,15 +23,27 @@ const Update = () => {
         console.log(jobDetails)
         axios.put(`http://localhost:5000/myPostedJob/${productData._id}`, { jobDetails })
             .then(result => {
-                console.log(result.data)
+                if (result.data) {
+                    Swal.fire({
+                        title: "The Job",
+                        text: "Updated Successfully",
+                        icon: "success"
+                    });
+                }
             })
             .catch(error => {
-                console.log(error)
+                if (error) {
+                    Swal.fire({
+                        title: "Oops",
+                        text: `${error.message}`,
+                        icon: "error"
+                    });
+                }
             })
     }
     return (
         <div>
-            <form onSubmit={handleUpdateJob} className="border  border-[#ddcc70] w-full  rounded-lg p-5">
+            <form onSubmit={handleUpdateJob} className="border  border-[#ddcc70] w-full md:w-2/3 md:mx-auto my-20 rounded-lg p-5">
                 <div className='md:grid md:grid-cols-2 gap-5'>
                     <div>
                         <div className="mb-2 block">
