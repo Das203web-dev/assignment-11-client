@@ -12,7 +12,7 @@ const Card = ({ job }) => {
                 <h1 className='font-bold text-lg capitalize'>{category}</h1>
                 <div className="text-pretty">
                     <h2>Deadline : {date}</h2>
-                    <p>Salary : From <span className='font-medium'>${minimumPrice}</span> to <span className='font-medium'>${minimumPrice}</span></p>
+                    <p>Salary : From <span className='font-medium'>${minimumPrice}</span> to <span className='font-medium'>${maximumPrice}</span></p>
                     <p className='overflow-hidden'>{email}</p>
                     <p>{description}</p>
                 </div>

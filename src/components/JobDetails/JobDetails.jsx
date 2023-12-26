@@ -16,8 +16,10 @@ const JobDetails = () => {
                 <h2 className='font-bold capitalize text-xl'>{jobTitle}</h2>
                 <h2>Last Date : {date}</h2>
                 <p className='md:w-2/3 mx-auto w-full'>Description : <span>{description}</span></p>
-                <p className='font-semibold text-xl'>Salary : ${maximumPrice} to ${minimumPrice}</p>
-                {currentUser?.email === email ? <Link to={`/update/${_id}`}>Update</Link> : <Link className='flex mx-auto mt-2' to={`/jobDetails/${_id}/placeBid`}><button className='p-[10px] bg-[#ddcc70] rounded-lg'>Place Your Bid</button></Link>}
+                <p className='font-semibold text-xl'>Salary : ${minimumPrice} to ${maximumPrice}</p>
+                {
+                    currentUser?.email === email ? <Link className=' mt-2 p-[10px] rounded-lg bg-[#ddcc70] flex mx-auto' to={`/update/${_id}`}>Update</Link> : <Link className='flex mx-auto mt-2' to={`/jobDetails/${_id}/placeBid`}><button className='p-[10px] bg-[#ddcc70] rounded-lg'>Place Your Bid</button></Link>
+                }
             </div>
 
         </div>

@@ -17,7 +17,7 @@ const MyPostedJob = () => {
     return (
         <div className='my-20 xl:w-2/3 xl:mx-auto mx-5'>
             <h1 className='text-center font-bold text-2xl mb-3 text-[#ddcc70]'>My posted job page</h1>
-            <div className='grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3'>
+            <div className='grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 gap-5'>
                 {
                     myPostedJob.map(postedJob => <Card key={postedJob._id} job={postedJob}></Card>)
                 }

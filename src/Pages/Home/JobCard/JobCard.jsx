@@ -20,7 +20,7 @@ const JobCard = ({ job }) => {
                 <h1 className='font-bold text-xl capitalize'>{jobTitle}</h1>
                 <div>
                     <h2>Deadline : {date}</h2>
-                    <p>Salary : From <span className='font-medium'>${maximumPrice}</span> to <span className='font-medium'>${minimumPrice}</span></p>
+                    <p>Salary : From <span className='font-medium'>${minimumPrice}</span> to <span className='font-medium'>${maximumPrice}</span></p>
                     <p className='font-normal'>{jobDetails?.email}</p>
                     {
                         description.length > 20 ? <p>{description.slice(0, 20)} <Link to={`/jobDetails/${_id}`} className='text-[#ddcc70]'>...Read more</Link></p> : `${description}`
