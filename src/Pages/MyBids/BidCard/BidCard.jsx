@@ -1,8 +1,25 @@
-import { Card } from 'flowbite-react';
-import React from 'react';
+import axios from 'axios';
+import { Checkbox, Table } from 'flowbite-react';
+// import React, { useState } from 'react';
+import Swal from 'sweetalert2';
 
 const BidCard = ({ bid }) => {
-    const { category, title, salaryRange, price, email, date, deadline, buyerEmail, description } = bid;
+    const { title, email, deadline, status, _id } = bid;
+    // const [visible, setVisible] = useState('In Progress')
+    const handleComplete = () => {
+        // const oldStatus = result.status;
+        const updatedStatus = { ...bid, status: "Complete" }
+        axios.put(`http://localhost:5000/bidRequest/${_id}`, updatedStatus)
+            .then(res => {
+                if (res.data) {
+                    Swal.fire({
+                        title: "The Internet?",
+                        text: "That thing is still around?",
+                        icon: "question"
+                    });
+                }
+            })
+    }
     return (
         // <div>
         //     <Card href="#" className="w-full text-wrap hover:bg-transparent hover:shadow-xl">
@@ -39,63 +56,37 @@ const BidCard = ({ bid }) => {
             <Table hoverable>
                 <Table.Head>
                     <Table.HeadCell className="p-4">
-                        <Checkbox />
+                        {/* <Checkbox /> */}
                     </Table.HeadCell>
-                    <Table.HeadCell>Product name</Table.HeadCell>
-                    <Table.HeadCell>Color</Table.HeadCell>
-                    <Table.HeadCell>Category</Table.HeadCell>
-                    <Table.HeadCell>Price</Table.HeadCell>
-                    <Table.HeadCell>
+                    <Table.HeadCell>Job Title</Table.HeadCell>
+                    <Table.HeadCell>Applicant Email</Table.HeadCell>
+                    <Table.HeadCell>Application Deadline</Table.HeadCell>
+                    <Table.HeadCell>Status</Table.HeadCell>
+                    {/* <Table.HeadCell>
                         <span className="sr-only">Edit</span>
-                    </Table.HeadCell>
+                    </Table.HeadCell> */}
                 </Table.Head>
                 <Table.Body className="divide-y">
                     <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
                         <Table.Cell className="p-4">
                             <Checkbox />
                         </Table.Cell>
-                        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                        {/* <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                             {'Apple MacBook Pro 17"'}
-                        </Table.Cell>
-                        <Table.Cell>Sliver</Table.Cell>
-                        <Table.Cell>Laptop</Table.Cell>
-                        <Table.Cell>$2999</Table.Cell>
-                        <Table.Cell>
-                            <a href="#" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
-                                Edit
+                        </Table.Cell> */}
+                        <Table.Cell>{title}</Table.Cell>
+                        <Table.Cell>{email}</Table.Cell>
+                        <Table.Cell>{deadline}</Table.Cell>
+                        <Table.Cell className='flex flex-col gap-3'>
+                            <a href="#" className="font-medium p-[10px] text-cyan-600 hover:underline dark:text-cyan-500">
+                                <button>{status}</button>
                             </a>
+                            {
+                                status === "In Progress" && <button onClick={handleComplete} className='p-[10px] text-black rounded-lg bg-[#ddcc70]'>Complete</button>
+                            }
                         </Table.Cell>
                     </Table.Row>
-                    <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                        <Table.Cell className="p-4">
-                            <Checkbox />
-                        </Table.Cell>
-                        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                            Microsoft Surface Pro
-                        </Table.Cell>
-                        <Table.Cell>White</Table.Cell>
-                        <Table.Cell>Laptop PC</Table.Cell>
-                        <Table.Cell>$1999</Table.Cell>
-                        <Table.Cell>
-                            <a href="#" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
-                                Edit
-                            </a>
-                        </Table.Cell>
-                    </Table.Row>
-                    <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                        <Table.Cell className="p-4">
-                            <Checkbox />
-                        </Table.Cell>
-                        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">Magic Mouse 2</Table.Cell>
-                        <Table.Cell>Black</Table.Cell>
-                        <Table.Cell>Accessories</Table.Cell>
-                        <Table.Cell>$99</Table.Cell>
-                        <Table.Cell>
-                            <a href="#" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
-                                Edit
-                            </a>
-                        </Table.Cell>
-                    </Table.Row>
+
                 </Table.Body>
             </Table>
         </div>

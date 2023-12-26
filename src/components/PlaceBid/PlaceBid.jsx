@@ -26,10 +26,11 @@ const PlaceBid = () => {
         const date = form.date.value;
         const deadline = form.deadline.value;
         const description = form.description.value;
+        const status = form.status.value;
         if (date > deadline) {
             return setbBidError('You can not set date that is after deadline')
         }
-        const bidInfo = { category, title, salaryRange, price, email, date, deadline, buyerEmail, description };
+        const bidInfo = { category, title, salaryRange, price, email, date, deadline, buyerEmail, status, description };
         console.log(bidInfo);
         axios.post('http://localhost:5000/myBids', bidInfo, { withCredentials: true })
             .then(res => {
@@ -87,7 +88,13 @@ const PlaceBid = () => {
                     <div className="mb-2 block">
                         <Label htmlFor="deadline" value="Deadline" />
                     </div>
-                    <TextInput id="deadline" name='ddeadline' type="date" value={bidJob?.jobDetails?.date} shadow />
+                    <TextInput id="deadline" name='deadline' type="date" value={bidJob?.jobDetails?.date} shadow />
+                </div>
+                <div>
+                    <div className="mb-2 block">
+                        <Label htmlFor="status" value="Status" />
+                    </div>
+                    <TextInput id="status" name='status' type="text" value="Pending" shadow />
                 </div>
                 <div>
                     <div className="mb-2 block">
