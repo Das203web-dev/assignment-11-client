@@ -23,11 +23,18 @@ const Update = () => {
         console.log(jobDetails)
         axios.put(`http://localhost:5000/myPostedJob/${productData._id}`, { jobDetails })
             .then(result => {
-                if (result.data) {
+                if (result.data.modifiedCount > 0) {
                     Swal.fire({
                         title: "The Job",
                         text: "Updated Successfully",
                         icon: "success"
+                    });
+                }
+                else {
+                    Swal.fire({
+                        title: "The Job",
+                        text: "Details Remain Same",
+                        icon: "question"
                     });
                 }
             })

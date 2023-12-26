@@ -13,9 +13,9 @@ const BidCard = ({ bid }) => {
             .then(res => {
                 if (res.data) {
                     Swal.fire({
-                        title: "The Internet?",
-                        text: "That thing is still around?",
-                        icon: "question"
+                        title: "Are You Sure?",
+                        text: "The Task Is Complete",
+                        icon: "success"
                     });
                 }
             })

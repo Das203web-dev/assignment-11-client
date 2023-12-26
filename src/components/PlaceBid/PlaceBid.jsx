@@ -3,6 +3,7 @@ import { Button, Label, TextInput, Textarea } from 'flowbite-react';
 import { useContext, useState } from 'react';
 import { AuthProvider } from '../../Provider/Provider';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 
 const PlaceBid = () => {
@@ -34,7 +35,13 @@ const PlaceBid = () => {
         console.log(bidInfo);
         axios.post('http://localhost:5000/myBids', bidInfo, { withCredentials: true })
             .then(res => {
-                console.log(res.data)
+                if (res.data) {
+                    Swal.fire({
+                        title: "Job Bid",
+                        text: "Successful",
+                        icon: "success"
+                    });
+                }
             })
     }
 
@@ -103,7 +110,7 @@ const PlaceBid = () => {
                     <Textarea id="description" name='description' type="text" value={description} shadow />
                 </div>
                 {bidError}
-                <Button className='bg-[#ddcc70] text-black' type="submit">Bid On This Project</Button>
+                <button className='bg-[#ddcc70] p-[10px] rounded-lg hover:bg-none hover:cursor-pointer text-black' type="submit">Bid On This Project</button>
             </form>
 
         </div>

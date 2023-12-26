@@ -18,27 +18,32 @@ const BidsRequest = () => {
     return (
         <div className='my-20 md:w-2/3 md:mx-auto w-full'>
             <h1 className='font-bold text-3xl text-center text-[#ddcc70] mb-10'>Bids request page</h1>
-            {/* {
-                bidRequest.map(result =>)
-            } */}
-            <div className="overflow-x-auto">
-                <Table striped>
-                    <Table.Head>
-                        <Table.HeadCell>Job Title</Table.HeadCell>
-                        <Table.HeadCell>Applicant Email</Table.HeadCell>
-                        <Table.HeadCell>Application Deadline</Table.HeadCell>
-                        <Table.HeadCell>Price</Table.HeadCell>
-                        <Table.HeadCell>
-                            <span className="sr-only">Actions</span>
-                        </Table.HeadCell>
-                    </Table.Head>
-                    <Table.Body className="divide-y gap-5">
-                        {
-                            bidRequest.map(result => <BidCard result={result}></BidCard>)
-                        }
-                    </Table.Body>
-                </Table>
-            </div>
+            {
+                bidRequest.length > 0 ? (
+                    <div className="overflow-x-auto">
+                        <Table striped>
+                            <Table.Head>
+                                <Table.HeadCell>Job Title</Table.HeadCell>
+                                <Table.HeadCell>Applicant Email</Table.HeadCell>
+                                <Table.HeadCell>Application Deadline</Table.HeadCell>
+                                <Table.HeadCell>Price</Table.HeadCell>
+                                <Table.HeadCell>
+                                    <span className="sr-only">Actions</span>
+                                </Table.HeadCell>
+                            </Table.Head>
+                            <Table.Body className="divide-y gap-5">
+                                {
+                                    bidRequest.map(result => <BidCard key={result._id} result={result}></BidCard>)
+                                }
+                            </Table.Body>
+                        </Table>
+                    </div>
+                ) : (
+                    <div>
+                        <h2 className='text-center my-5 text-xl'>You do not have any Bid Request</h2>
+                    </div>
+                )
+            }
         </div>
     );
 };
