@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Card = ({ job }) => {
+const Card = ({ job, handleDelete }) => {
     const { jobDetails } = job;
     const { category, date, description, email, jobTitle, minimumPrice, maximumPrice } = jobDetails;
 
@@ -19,7 +19,7 @@ const Card = ({ job }) => {
             </div>
             <div className="flex items-center justify-between w-full">
                 <Link to={`/update/${job._id}`}><button className='p-[10px] bg-[#ddcc70] rounded-lg'>Update</button></Link>
-                <Link to={`/jobDetails/${job._id}`}><button className='p-[10px] bg-[#ddcc70] rounded-lg'>Delete</button></Link>
+                <Link><button onClick={() => handleDelete(job._id)} className='p-[10px] bg-[#ddcc70] rounded-lg'>Delete</button></Link>
             </div>
         </div>
     );

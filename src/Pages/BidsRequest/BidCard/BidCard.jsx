@@ -18,7 +18,7 @@ const BidCard = ({ result }) => {
     }
     const handleReject = () => {
         const updatedStatus = { ...result, status: "Canceled" }
-        axios.put(`http://localhost:5000/bidRequest/${result._id}`, updatedStatus)
+        axios.put(`https://job-genie-u1ji.onrender.com/bidRequest/${result._id}`, updatedStatus)
             .then(res => {
                 if (res.data) {
                     setCurrentStatus("Canceled");
@@ -36,7 +36,7 @@ const BidCard = ({ result }) => {
     const handleAccept = () => {
         // const oldStatus = result.status;
         const updatedStatus = { ...result, status: "In Progress" }
-        axios.put(`http://localhost:5000/bidRequest/${result._id}`, updatedStatus)
+        axios.put(`https://job-genie-u1ji.onrender.com/bidRequest/${result._id}`, updatedStatus)
             .then(res => {
                 if (res.data) {
                     setCurrentStatus("In Progress")

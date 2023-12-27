@@ -7,7 +7,7 @@ import { Helmet } from 'react-helmet-async';
 const MyBids = () => {
     const { currentUser } = useContext(AuthProvider);
     const [myBid, setMyBid] = useState([])
-    const url = `http://localhost:5000/myBids?email=${currentUser?.email}`
+    const url = `https://job-genie-u1ji.onrender.com/myBids?email=${currentUser?.email}`
     useEffect(() => {
         axios.get(url, { withCredentials: true })
             .then(res => {

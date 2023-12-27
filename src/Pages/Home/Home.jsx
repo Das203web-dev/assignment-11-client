@@ -5,13 +5,19 @@ import CategoryTabs from './CategoryTabs/CategoryTabs';
 import JobCard from './JobCard/JobCard';
 import { Accordion, Button, Card, Checkbox, Label, TextInput } from 'flowbite-react';
 import { Helmet } from 'react-helmet-async';
+import { AnimatePresence, motion } from 'framer-motion';
+
+
+
 
 const Home = () => {
     const { datas } = useContext(AuthProvider);
+    const [selectedId, setSelectedId] = useState(null)
+
     const [jobs, setJobs] = useState([])
     const handleCategory = (category) => {
         // console.log("category is", category)
-        fetch(`http://localhost:5000/category/${category}`)
+        fetch(`https://job-genie-u1ji.onrender.com/category/${category}`)
             .then(res => res.json())
             .then(data => setJobs(data))
     }
@@ -130,6 +136,32 @@ const Home = () => {
                     </form>
                 </div>
 
+            </div>
+            <div>
+                <h1>Framer Motion</h1>
+                <div className='h-60'>
+                    {jobs.map(item => (
+                        <motion.div key={item._id} layoutId={item._id} onClick={() => setSelectedId(item._id)}>
+                            <motion.h5>{item.email}</motion.h5>
+                            <motion.h2>{item.title}</motion.h2>
+                        </motion.div>
+                    ))}
+
+                    <AnimatePresence>
+                        {selectedId && (
+                            <motion.div
+                                key={selectedId}
+                                layoutId={selectedId}
+                                animate={{ x: 100 }} // Your desired animation
+                                exit={{ x: -100 }} // Animation when unmounting
+                                transition={{ duration: 0.5 }} // Animation duration
+                            >
+                                <motion.h2>{selectedId}</motion.h2>
+                                <motion.button onClick={() => setSelectedId(null)}>Close</motion.button>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
             </div>
 
         </div>
