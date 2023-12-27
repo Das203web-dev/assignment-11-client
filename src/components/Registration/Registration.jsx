@@ -5,6 +5,7 @@ import { AuthProvider } from '../../Provider/Provider';
 import Swal from 'sweetalert2';
 import { FaGoogle } from 'react-icons/fa6';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
 
 const Registration = () => {
     const location = useLocation();
@@ -97,6 +98,9 @@ const Registration = () => {
     }
     return (
         <div className='m-5 text-[#ddcc70]'>
+            <Helmet>
+                <title>Job Genie - Registration</title>
+            </Helmet>
             <h1 className='text-3xl font-bold text-center mb-3'>Register Here</h1>
             <div className='border border-[#ddcc70] md:w-1/3 mx-auto rounded-lg p-5'>
                 <form onSubmit={handleCreateUser} className="flex w-full flex-col gap-4">

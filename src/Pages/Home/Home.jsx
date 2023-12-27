@@ -4,6 +4,7 @@ import Banner from '../../components/Banner/Banner';
 import CategoryTabs from './CategoryTabs/CategoryTabs';
 import JobCard from './JobCard/JobCard';
 import { Accordion, Button, Card, Checkbox, Label, TextInput } from 'flowbite-react';
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
     const { datas } = useContext(AuthProvider);
@@ -17,6 +18,9 @@ const Home = () => {
     // console.log(jobs)
     return (
         <div>
+            <Helmet>
+                <title>Job Genie - Home</title>
+            </Helmet>
             <Banner></Banner>
             <div className='md:w-2/3 md:mx-auto my-20 m-5'>
                 <h1 className='font-bold text-3xl text-center mb-10'>Browse Job By Category</h1>

@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { AuthProvider } from '../../Provider/Provider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const AddJob = () => {
     const { currentUser, datas } = useContext(AuthProvider);
@@ -40,7 +41,10 @@ const AddJob = () => {
     }
     return (
         <div className='m-5 text-[#ddcc70]'>
-            <h1>This is add job page</h1>
+            <Helmet>
+                <title>Job Genie - Add Job</title>
+            </Helmet>
+            <h1 className='font-bold text-3xl text-center text-[#ddcc70] mb-10'>Add job here</h1>
             <form onSubmit={handlePostJob} className="border  border-[#ddcc70] md:w-2/3 mx-auto rounded-lg p-5">
                 <div className='md:grid md:grid-cols-2 gap-5'>
                     <div>

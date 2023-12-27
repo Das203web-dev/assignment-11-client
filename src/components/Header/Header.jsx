@@ -1,10 +1,20 @@
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthProvider } from "../../Provider/Provider";
 
 const Header = () => {
     const { currentUser, logout } = useContext(AuthProvider);
+    const [isOpen, setOpen] = useState(true);
+    const handleOpen = () => {
+        console.log("nav open")
+        setOpen(!isOpen)
+    }
+    const closeNav = () => {
+        console.log(isOpen)
+        setOpen(false)
+    }
+    console.log("open", isOpen)
     // console.log(currentUser)
     const menuLinks = [
         { name: "Home", id: 1, path: "/" },
@@ -30,9 +40,7 @@ const Header = () => {
                     inline
                     label={
                         <Avatar alt="User settings" img={currentUser.photoURL} rounded />
-
                     }
-
                 >
                     <Dropdown.Header>
                         <span className="block text-sm">{currentUser.displayName}</span>
@@ -46,13 +54,13 @@ const Header = () => {
                 </Dropdown> : <Link to={'/login'} className="font-bold">Login</Link>}
                 {/* {currentUser ? "" : <Link to={'/login'} className="font-bold">Login</Link>} */}
             </div>
-            <Navbar.Collapse className=" text-center ">
+            <Navbar.Collapse className={`text-center`}>
                 {
                     menuLinks.map(menu => (
                         <NavLink key={menu.id} to={menu.path}
                             className={({ isActive, isPending }) =>
                                 isActive
-                                    ? "active"
+                                    ? `active`
                                     : isPending
                                         ? "pending"
                                         : ""

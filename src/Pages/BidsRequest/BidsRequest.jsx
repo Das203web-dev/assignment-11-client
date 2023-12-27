@@ -1,8 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 import { AuthProvider } from '../../Provider/Provider';
 import axios from 'axios';
-import { Table } from 'flowbite-react';
+import { Checkbox, Table } from 'flowbite-react';
 import BidCard from './BidCard/BidCard';
+import { Helmet } from 'react-helmet-async';
+// import BidRequestCard from './BidRequestCard/BidRequestCard';
 
 const BidsRequest = () => {
     const { currentUser } = useContext(AuthProvider);
@@ -14,21 +16,28 @@ const BidsRequest = () => {
                 setBidrequest(res.data)
             })
     }, [url, currentUser]);
-    console.log(bidRequest)
+    // console.log(bidRequest)
     return (
-        <div className='my-20 md:w-2/3 md:mx-auto w-full'>
+        <div className='my-20 lg:w-2/3 mx-5 lg:mx-auto w-full'>
+            <Helmet>
+                <title>Job Genie - Bid Request</title>
+            </Helmet>
             <h1 className='font-bold text-3xl text-center text-[#ddcc70] mb-10'>Bids request page</h1>
             {
                 bidRequest.length > 0 ? (
                     <div className="overflow-x-auto">
                         <Table striped>
                             <Table.Head>
+                                <Table.HeadCell className="p-4">
+                                    {/* <Checkbox /> */}
+                                </Table.HeadCell>
                                 <Table.HeadCell>Job Title</Table.HeadCell>
                                 <Table.HeadCell>Applicant Email</Table.HeadCell>
                                 <Table.HeadCell>Application Deadline</Table.HeadCell>
                                 <Table.HeadCell>Price</Table.HeadCell>
                                 <Table.HeadCell>
-                                    <span className="sr-only">Actions</span>
+                                    status
+                                    {/* <span className="sr-only">Actions</span> */}
                                 </Table.HeadCell>
                             </Table.Head>
                             <Table.Body className="divide-y gap-5">

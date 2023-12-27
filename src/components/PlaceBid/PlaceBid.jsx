@@ -4,6 +4,7 @@ import { useContext, useState } from 'react';
 import { AuthProvider } from '../../Provider/Provider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 
 const PlaceBid = () => {
@@ -47,6 +48,9 @@ const PlaceBid = () => {
 
     return (
         <div className='my-20 md:w-2/3 md:mx-auto mx-5'>
+            <Helmet>
+                <title>Job Genie - Place Bid</title>
+            </Helmet>
             <h1 className='text-[#ddcc70] text-center font-bold text-3xl'>Bid Here</h1>
             <form onSubmit={handleBid} className="flex flex-col gap-4">
                 <div>
