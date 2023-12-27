@@ -35,8 +35,8 @@ const Provider = ({ children }) => {
 
     useEffect(() => {
         onAuthStateChanged(auth, user => {
-            console.log("current userser is", currentUser)
-            console.log("user is", user)
+            // console.log("current userser is", currentUser)
+            // console.log("user is", user)
             const userEmail = user?.email || currentUser?.email;
             const loggedUser = { email: userEmail };
             setUser(user);
@@ -45,13 +45,13 @@ const Provider = ({ children }) => {
                 // const loggedUser = { email: user.email }
                 axios.post('http://localhost:5000/jwt', loggedUser, { withCredentials: true })
                     .then(res => {
-                        console.log("provider compo", res.data)
+                        // console.log("provider compo", res.data)
                     })
             }
             else {
                 axios.post("http://localhost:5000/logout", loggedUser, { withCredentials: true })
                     .then(res => {
-                        console.log(res.data)
+                        // console.log(res.data)
                     })
             }
         })

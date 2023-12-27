@@ -1,16 +1,12 @@
 import axios from 'axios';
 import { Checkbox, Table } from 'flowbite-react';
 import { useState } from 'react';
-// import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 
 const BidCard = ({ bid }) => {
     const { title, email, deadline, status, _id } = bid;
-    console.log("from mybid compo", status)
     const [recentStatus, setRecentStatus] = useState(status);
-    // const [visible, setVisible] = useState('In Progress')
     const handleComplete = () => {
-        // const oldStatus = result.status;
         const updatedStatus = { ...bid, status: "Complete" }
         axios.put(`http://localhost:5000/bidRequest/${_id}`, updatedStatus)
             .then(res => {
@@ -24,7 +20,6 @@ const BidCard = ({ bid }) => {
                 }
             })
     }
-    console.log(recentStatus)
     return (
         // <div>
         //     <Card href="#" className="w-full text-wrap hover:bg-transparent hover:shadow-xl">

@@ -6,15 +6,15 @@ import { AuthProvider } from "../../Provider/Provider";
 const Header = () => {
     const { currentUser, logout } = useContext(AuthProvider);
     const [isOpen, setOpen] = useState(true);
-    const handleOpen = () => {
-        console.log("nav open")
+    const handleOpen = (name) => {
+        console.log("nav open", name)
         setOpen(!isOpen)
     }
     const closeNav = () => {
-        console.log(isOpen)
+        // console.log(isOpen)
         setOpen(false)
     }
-    console.log("open", isOpen)
+    // console.log("open", isOpen)
     // console.log(currentUser)
     const menuLinks = [
         { name: "Home", id: 1, path: "/" },
@@ -54,10 +54,12 @@ const Header = () => {
                 </Dropdown> : <Link to={'/login'} className="font-bold">Login</Link>}
                 {/* {currentUser ? "" : <Link to={'/login'} className="font-bold">Login</Link>} */}
             </div>
-            <Navbar.Collapse className={`text-center`}>
+            <Navbar.Collapse className={`text-center `}>
                 {
                     menuLinks.map(menu => (
-                        <NavLink key={menu.id} to={menu.path}
+                        <NavLink
+                            key={menu.id}
+                            to={menu.path}
                             className={({ isActive, isPending }) =>
                                 isActive
                                     ? `active`

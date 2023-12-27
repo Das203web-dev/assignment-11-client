@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 const Card = ({ job }) => {
-    console.log(job)
     const { jobDetails } = job;
     const { category, date, description, email, jobTitle, minimumPrice, maximumPrice } = jobDetails;
     // const { }

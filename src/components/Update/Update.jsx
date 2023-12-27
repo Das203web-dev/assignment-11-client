@@ -1,13 +1,17 @@
 import { Label, Select, TextInput, Textarea } from 'flowbite-react';
 import React, { useContext } from 'react';
 import { AuthProvider } from '../../Provider/Provider';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
 const Update = () => {
     const { datas, currentUser } = useContext(AuthProvider);
     const productData = useLoaderData();
+    const location = useLocation();
+    const navigate = useNavigate();
+    console.log(location);
+    console.log(navigate)
     console.log(productData._id)
     const handleUpdateJob = (e) => {
         e.preventDefault();
@@ -20,7 +24,7 @@ const Update = () => {
         const maximumPrice = form.maximumPrice.value;
         const description = form.description.value;
         const jobDetails = { email, jobTitle, category, date, minimumPrice, maximumPrice, description };
-        console.log(jobDetails)
+        // console.log(jobDetails)
         axios.put(`http://localhost:5000/myPostedJob/${productData._id}`, { jobDetails })
             .then(result => {
                 if (result.data.modifiedCount > 0) {
@@ -29,6 +33,9 @@ const Update = () => {
                         text: "Updated Successfully",
                         icon: "success"
                     });
+                    // setTimeout(()=>{
+                    //     navigate(location?. ? location.state)
+                    // },2000)
                 }
                 else {
                     Swal.fire({
@@ -49,7 +56,7 @@ const Update = () => {
             })
     }
     return (
-        <div>
+        <div className='mx-5'>
             <form onSubmit={handleUpdateJob} className="border  border-[#ddcc70] w-full md:w-2/3 md:mx-auto my-20 rounded-lg p-5">
                 <div className='md:grid md:grid-cols-2 gap-5'>
                     <div>

@@ -6,7 +6,6 @@ import { Helmet } from 'react-helmet-async';
 
 const MyBids = () => {
     const { currentUser } = useContext(AuthProvider);
-    console.log(currentUser.email);
     const [myBid, setMyBid] = useState([])
     const url = `http://localhost:5000/myBids?email=${currentUser?.email}`
     useEffect(() => {
@@ -15,7 +14,6 @@ const MyBids = () => {
                 setMyBid(res.data)
             })
     }, [url, currentUser])
-    // console.log(myBid);
 
     return (
         <div className='my-20 mx-5 lg:w-2/3 lg:mx-auto'>

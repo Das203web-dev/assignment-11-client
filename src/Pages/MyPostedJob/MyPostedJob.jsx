@@ -6,15 +6,12 @@ import { Helmet } from 'react-helmet-async';
 
 const MyPostedJob = () => {
     const { currentUser } = useContext(AuthProvider);
-    console.log('currentuser is', currentUser.email)
     const [myPostedJob, setMyPostedJob] = useState([]);
     const url = `http://localhost:5000/myPostedJob?email=${currentUser?.email}`;
-    console.log(url)
     useEffect(() => {
         axios.get(url, { withCredentials: true })
             .then(res => setMyPostedJob(res.data))
     }, [url]);
-    console.log("myposted data client side", myPostedJob)
     return (
         <div className='my-20 xl:w-2/3 xl:mx-auto mx-5'>
             <Helmet>

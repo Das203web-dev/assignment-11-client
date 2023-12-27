@@ -4,9 +4,11 @@ import { AuthProvider } from '../../Provider/Provider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet-async';
+import { useNavigate } from 'react-router-dom';
 
 const AddJob = () => {
     const { currentUser, datas } = useContext(AuthProvider);
+    const navigate = useNavigate()
     const handlePostJob = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -18,7 +20,6 @@ const AddJob = () => {
         const maximumPrice = form.maximumPrice.value;
         const description = form.description.value;
         const jobDetails = { email, jobTitle, category, date, minimumPrice, maximumPrice, description };
-        console.log(jobDetails)
         axios.post('http://localhost:5000/myPostedJob', { jobDetails })
             .then(result => {
                 if (result.data) {
@@ -27,6 +28,9 @@ const AddJob = () => {
                         text: "Added Sucessfully",
                         icon: "success"
                     });
+                    setTimeout(() => {
+                        navigate('/myPostedJob')
+                    }, 2000)
                 }
             })
             .catch(error => {
@@ -51,7 +55,7 @@ const AddJob = () => {
                         <div className="mb-2 block">
                             <Label htmlFor="email1" value="Your email" />
                         </div>
-                        <TextInput name="email" value={currentUser?.email} id="email1" type="email" placeholder={currentUser?.email} required />
+                        <TextInput name="email" readOnly defaultValue={currentUser?.email} id="email1" type="email" placeholder={currentUser?.email} required />
                     </div>
                     <div>
                         <div className="mb-2 block">
@@ -65,7 +69,7 @@ const AddJob = () => {
                         </div>
                         <Select id="category" name='categories' required>
                             {
-                                datas.map(data => (<option key={data.id}>{data.category}</option>))
+                                datas.map((data, index) => (<option key={index}>{data.category}</option>))
                             }
 
                         </Select>

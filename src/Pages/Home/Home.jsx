@@ -26,7 +26,7 @@ const Home = () => {
                 <h1 className='font-bold text-3xl text-center mb-10'>Browse Job By Category</h1>
                 <div className='grid grid-cols-3 justify-between items-center'>
                     {
-                        datas.map(data => <CategoryTabs handleCategory={handleCategory} key={data.id} data={data}></CategoryTabs>)
+                        datas.map((data, index) => <CategoryTabs handleCategory={handleCategory} key={index} data={data}></CategoryTabs>)
                     }
 
                 </div>

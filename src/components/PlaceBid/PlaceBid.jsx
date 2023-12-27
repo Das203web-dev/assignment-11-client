@@ -1,4 +1,4 @@
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import { Button, Label, TextInput, Textarea } from 'flowbite-react';
 import { useContext, useState } from 'react';
 import { AuthProvider } from '../../Provider/Provider';
@@ -10,6 +10,7 @@ import { Helmet } from 'react-helmet-async';
 const PlaceBid = () => {
     const bidJob = useLoaderData();
     console.log(bidJob);
+    const navigate = useNavigate()
     const { jobDetails } = bidJob;
     const { category, jobTitle, maximumPrice, minimumPrice, description } = jobDetails;
     const salary = `${'$ ' + (minimumPrice)} to ${'$ ' + (maximumPrice)}`
@@ -43,6 +44,9 @@ const PlaceBid = () => {
                         icon: "success"
                     });
                 }
+                setTimeout(() => {
+                    navigate('/myBids')
+                }, 2000)
             })
     }
 
