@@ -9,13 +9,15 @@ import { Helmet } from 'react-helmet-async';
 
 const PlaceBid = () => {
     const bidJob = useLoaderData();
-    console.log(bidJob);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
     const { jobDetails } = bidJob;
     const { category, jobTitle, maximumPrice, minimumPrice, description } = jobDetails;
-    const salary = `${'$ ' + (minimumPrice)} to ${'$ ' + (maximumPrice)}`
+    const salary = `${'$ ' + (minimumPrice)} to ${'$ ' + (maximumPrice)}`;
     const { currentUser } = useContext(AuthProvider);
     const [bidError, setbBidError] = useState(null);
+    const currentDate = new Date();
+    console.log(currentDate)
 
     const handleBid = (e) => {
         e.preventDefault();

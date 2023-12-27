@@ -10,7 +10,7 @@ const JobDetails = () => {
     const { jobDetails, _id } = job;
     const { category, date, description, jobTitle, maximumPrice, minimumPrice, email } = jobDetails;
     return (
-        <div className='md:w-2/3 w-full mx-auto my-10'>
+        <div className='md:w-2/3 md:mx-auto mx-5 my-10'>
             <Helmet>
                 <title>Job Genie - Job Details</title>
             </Helmet>

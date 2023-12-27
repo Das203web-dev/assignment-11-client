@@ -5,15 +5,15 @@ import { Button, Checkbox, Label, Modal, Select, TextInput, Textarea } from 'flo
 import axios from 'axios';
 
 const JobCard = ({ job }) => {
-    const { currentUser, datas } = useContext(AuthProvider);
+    const { currentUser } = useContext(AuthProvider);
+    const [checkDate, setCheckDate] = useState()
     // const {datas} = useContext(AuthProvider)
     // console.log(currentUser.email)
     // console.log(job)
     const { jobDetails, _id } = job;
-    const { jobTitle, date, maximumPrice, minimumPrice, description, category } = jobDetails;
-
-
-
+    const { jobTitle, date, maximumPrice, minimumPrice, description } = jobDetails;
+    const formDate = new Date(date);
+    const currentDate = new Date();
     return (
         <div className='shadow-sm shadow-slate-300 flex flex-col gap-5 mb-5 rounded-lg p-2 hover:shadow-md'>
             <div className='flex-grow'>
@@ -27,8 +27,8 @@ const JobCard = ({ job }) => {
                     }
                 </div>
             </div>
-            {currentUser?.email === jobDetails?.email ? <Link to={`/jobDetails/${job._id}`}><button className='p-[10px] bg-[#ddcc70] rounded-lg'>Details</button></Link> : <Link to={`/jobDetails/${job._id}`}><button className='p-[10px] bg-[#ddcc70] rounded-lg'>Bid Now</button></Link>}
-        </div>
+            {currentUser?.email === jobDetails?.email ? <Link to={`/jobDetails/${job._id}`}><button className='p-[10px] bg-[#ddcc70] rounded-lg btn-'>Details</button></Link> : <Link to={`/jobDetails/${job._id}`}><button disabled={formDate < currentDate} className={`p-[10px]  rounded-lg ${formDate < currentDate ? "bg-[#ddcd7081] cursor-not-allowed" : "bg-[#ddcc70] "}`}>Bid Now</button></Link>}
+        </div >
     );
 };
 

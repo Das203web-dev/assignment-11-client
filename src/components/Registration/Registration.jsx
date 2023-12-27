@@ -62,25 +62,27 @@ const Registration = () => {
                     setValidatePass("");
                     axios.post('http://localhost:5000/jwt', newUser, { withCredentials: true })
                         .then(res => {
-                            console.log(res.data)
+                            if (res.data) {
+                                Swal.fire({
+                                    title: "Registration successful",
+                                    showClass: {
+                                        popup: `
+                                animate__animated
+                                animate__fadeInUp
+                                animate__faster
+                              `
+                                    },
+                                    hideClass: {
+                                        popup: `
+                                animate__animated
+                                animate__fadeOutDown
+                                animate__faster
+                              `
+                                    }
+                                });
+                            }
                         })
-                    Swal.fire({
-                        title: "Registration successful",
-                        showClass: {
-                            popup: `
-                    animate__animated
-                    animate__fadeInUp
-                    animate__faster
-                  `
-                        },
-                        hideClass: {
-                            popup: `
-                    animate__animated
-                    animate__fadeOutDown
-                    animate__faster
-                  `
-                        }
-                    });
+
                     navigate(location?.state ? location.state : "/")
 
                 }

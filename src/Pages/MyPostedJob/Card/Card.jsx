@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 const Card = ({ job }) => {
     const { jobDetails } = job;
     const { category, date, description, email, jobTitle, minimumPrice, maximumPrice } = jobDetails;
+
     // const { }
     return (
         <div className='shadow-sm shadow-slate-300 flex flex-col justify-between gap-2 rounded-lg p-5 hover:shadow-md'>
