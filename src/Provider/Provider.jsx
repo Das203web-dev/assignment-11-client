@@ -40,9 +40,10 @@ const Provider = ({ children }) => {
             setUser(user);
             setLoading(false)
             if (user) {
+                setLoading(true)
                 axios.post('https://job-genie-u1ji.onrender.com/jwt', loggedUser, { withCredentials: true })
                     .then(res => {
-                        if (res.data) {
+                        if (res.data.success) {
                             setLoading(false)
                         }
                     })
@@ -50,7 +51,7 @@ const Provider = ({ children }) => {
             else {
                 axios.post("https://job-genie-u1ji.onrender.com/logout", loggedUser, { withCredentials: true })
                     .then(res => {
-
+                        console.log("from logout", res.data)
                     })
             }
         })
