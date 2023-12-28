@@ -25,7 +25,7 @@ const Update = () => {
         const description = form.description.value;
         const jobDetails = { email, jobTitle, category, date, minimumPrice, maximumPrice, description };
         // console.log(jobDetails)
-        axios.put(`http://localhost:5000/myPostedJob/${productData._id}`, { jobDetails }, { withCredentials: true })
+        axios.put(`https://job-genie-u1ji.onrender.com/myPostedJob/${productData._id}`, { jobDetails }, { withCredentials: true })
             .then(result => {
                 if (result.data.modifiedCount > 0) {
                     Swal.fire({

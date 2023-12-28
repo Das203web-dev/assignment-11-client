@@ -35,27 +35,22 @@ const Provider = ({ children }) => {
 
     useEffect(() => {
         onAuthStateChanged(auth, user => {
-            // console.log("current userser is", currentUser)
-            // console.log("user is", user)
             const userEmail = user?.email || currentUser?.email;
             const loggedUser = { email: userEmail };
             setUser(user);
-            // setLoading(false)
+            setLoading(false)
             if (user) {
-                // const loggedUser = { email: user.email }
-                axios.post('http://localhost:5000/jwt', loggedUser, { withCredentials: true })
+                axios.post('https://job-genie-u1ji.onrender.com/jwt', loggedUser, { withCredentials: true })
                     .then(res => {
                         if (res.data) {
                             setLoading(false)
                         }
-                        // console.log("provider compo", res.data)
                     })
             }
             else {
-                axios.post("http://localhost:5000/logout", loggedUser, { withCredentials: true })
+                axios.post("https://job-genie-u1ji.onrender.com/logout", loggedUser, { withCredentials: true })
                     .then(res => {
-                        setLoading(false)
-                        // console.log(res.data)
+
                     })
             }
         })

@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 const MyPostedJob = () => {
     const { currentUser, setLoading } = useContext(AuthProvider);
     const [myPostedJob, setMyPostedJob] = useState([]);
-    const url = `http://localhost:5000/myPostedJob?email=${currentUser?.email}`;
+    const url = `https://job-genie-u1ji.onrender.com/myPostedJob?email=${currentUser?.email}`;
     useEffect(() => {
         axios.get(url, { withCredentials: true })
             .then(res => {
@@ -27,7 +27,7 @@ const MyPostedJob = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/myPostedJob/${id}`, { withCredentials: true })
+                axios.delete(`https://job-genie-u1ji.onrender.com/myPostedJob/${id}`, { withCredentials: true })
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             Swal.fire({
