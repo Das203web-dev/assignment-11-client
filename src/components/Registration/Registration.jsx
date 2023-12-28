@@ -60,7 +60,7 @@ const Registration = () => {
                 if (user) {
                     console.log(user)
                     setValidatePass("");
-                    axios.post('https://job-genie-u1ji.onrender.com/jwt', newUser, { withCredentials: true })
+                    axios.post('http://localhost:5000/jwt', newUser, { withCredentials: true })
                         .then(res => {
                             if (res.data) {
                                 Swal.fire({

@@ -16,7 +16,7 @@ const Login = () => {
             .then(result => {
                 if (result.user) {
                     const loggedUser = result.user.email;
-                    axios.post("https://job-genie-u1ji.onrender.com/jwt", loggedUser, { withCredentials: true })
+                    axios.post("http://localhost:5000/jwt", loggedUser, { withCredentials: true })
                         .then(res => {
                             console.log(res.data)
                         })
@@ -56,7 +56,7 @@ const Login = () => {
                 const user = result.user;
                 const loggedUser = { userEmail }
                 if (user) {
-                    axios.post('https://job-genie-u1ji.onrender.com/jwt', loggedUser, { withCredentials: true })
+                    axios.post('http://localhost:5000/jwt', loggedUser, { withCredentials: true })
                         .then(res => {
                             if (res.data) {
                                 Swal.fire({

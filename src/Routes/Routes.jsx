@@ -21,7 +21,7 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>,
-                // loader: () => fetch('https://job-genie-u1ji.onrender.com/category')
+                // loader: () => fetch('http://localhost:5000/category')
             },
             {
                 path: "/addJob",
@@ -42,12 +42,12 @@ const router = createBrowserRouter([
             {
                 path: "/jobDetails/:id",
                 element: <PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`https://job-genie-u1ji.onrender.com/jobDetails/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/jobDetails/${params.id}`)
             },
             {
                 path: "/jobDetails/:id/placeBid",
                 element: <PlaceBid></PlaceBid>,
-                loader: ({ params }) => fetch(`https://job-genie-u1ji.onrender.com/jobDetails/${params.id}/placeBid`)
+                loader: ({ params }) => fetch(`http://localhost:5000/jobDetails/${params.id}/placeBid`)
             },
             {
                 path: "/login",
@@ -60,7 +60,7 @@ const router = createBrowserRouter([
             {
                 path: "/update/:id",
                 element: <Update></Update>,
-                loader: ({ params }) => fetch(`https://job-genie-u1ji.onrender.com/update/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/update/${params.id}`)
             }
         ]
     }

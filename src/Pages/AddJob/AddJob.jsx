@@ -20,7 +20,7 @@ const AddJob = () => {
         const maximumPrice = form.maximumPrice.value;
         const description = form.description.value;
         const jobDetails = { email, jobTitle, category, date, minimumPrice, maximumPrice, description };
-        axios.post('https://job-genie-u1ji.onrender.com/myPostedJob', { jobDetails }, { withCredentials: true })
+        axios.post('http://localhost:5000/myPostedJob', { jobDetails }, { withCredentials: true })
             .then(result => {
                 if (result.data) {
                     Swal.fire({

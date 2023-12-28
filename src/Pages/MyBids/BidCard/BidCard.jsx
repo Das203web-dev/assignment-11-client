@@ -8,7 +8,7 @@ const BidCard = ({ bid }) => {
     const [recentStatus, setRecentStatus] = useState(status);
     const handleComplete = () => {
         const updatedStatus = { ...bid, status: "Complete" }
-        axios.put(`https://job-genie-u1ji.onrender.com/bidRequest/${_id}`, updatedStatus)
+        axios.put(`http://localhost:5000/bidRequest/${_id}`, updatedStatus)
             .then(res => {
                 if (res.data) {
                     setRecentStatus("Complete")

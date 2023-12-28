@@ -37,7 +37,7 @@ const PlaceBid = () => {
         }
         const bidInfo = { category, title, salaryRange, price, email, date, deadline, buyerEmail, status, description };
         console.log(bidInfo);
-        axios.post('https://job-genie-u1ji.onrender.com/myBids', bidInfo, { withCredentials: true })
+        axios.post('http://localhost:5000/myBids', bidInfo, { withCredentials: true })
             .then(res => {
                 if (res.data) {
                     Swal.fire({

@@ -5,15 +5,16 @@ import BidCard from './BidCard/BidCard';
 import { Helmet } from 'react-helmet-async';
 
 const MyBids = () => {
-    const { currentUser } = useContext(AuthProvider);
+    const { currentUser, setLoading } = useContext(AuthProvider);
     const [myBid, setMyBid] = useState([])
-    const url = `https://job-genie-u1ji.onrender.com/myBids?email=${currentUser?.email}`
+    const url = `http://localhost:5000/myBids?email=${currentUser?.email}`
     useEffect(() => {
         axios.get(url, { withCredentials: true })
             .then(res => {
-                setMyBid(res.data)
+                setMyBid(res.data);
+                setLoading(false)
             })
-    }, [url, currentUser])
+    }, [url, currentUser, setLoading])
 
     return (
         <div className='my-20 mx-5 lg:w-2/3 lg:mx-auto'>

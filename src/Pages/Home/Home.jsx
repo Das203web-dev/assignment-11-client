@@ -17,7 +17,7 @@ const Home = () => {
     const [jobs, setJobs] = useState([])
     const handleCategory = (category) => {
         // console.log("category is", category)
-        fetch(`https://job-genie-u1ji.onrender.com/category/${category}`)
+        fetch(`http://localhost:5000/category/${category}`)
             .then(res => res.json())
             .then(data => setJobs(data))
     }

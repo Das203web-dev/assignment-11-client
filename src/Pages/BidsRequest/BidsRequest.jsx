@@ -7,18 +7,19 @@ import { Helmet } from 'react-helmet-async';
 // import BidRequestCard from './BidRequestCard/BidRequestCard';
 
 const BidsRequest = () => {
-    const { currentUser } = useContext(AuthProvider);
+    const { currentUser, setLoading } = useContext(AuthProvider);
     const [bidRequest, setBidrequest] = useState([])
-    const url = `https://job-genie-u1ji.onrender.com/bidRequest?email=${currentUser?.email}`;
+    const url = `http://localhost:5000/bidRequest?email=${currentUser?.email}`;
     useEffect(() => {
         axios.get(url, { withCredentials: true })
             .then(res => {
-                setBidrequest(res.data)
+                setBidrequest(res.data);
+                setLoading(false)
             })
-    }, [url, currentUser]);
+    }, [url, currentUser, setLoading]);
     // console.log(bidRequest)
     return (
-        <div className='my-20 lg:w-2/3 mx-5 lg:mx-auto w-full'>
+        <div className='my-20 lg:w-2/3 mx-5 lg:mx-auto'>
             <Helmet>
                 <title>Job Genie - Bid Request</title>
             </Helmet>
